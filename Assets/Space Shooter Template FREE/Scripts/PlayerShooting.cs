@@ -2,52 +2,67 @@
 
 public class PlayerShooting : MonoBehaviour
 {
-    // Singleton
     public static PlayerShooting instance;
 
-    [Header("Bullet")]
-    public GameObject bulletPrefab;
+    [Header("Weapon")]
+    public GameObject bulletPrefabs;
+    public float shootingInterval = 0.2f;
+    public Vector3 bulletOffset = new Vector3(0, 0.6f, 0);
 
     [Header("Weapon Power")]
-    public int weaponPower = 1;
-    public int maxweaponPower = 3;   // 👈 GIỮ ĐÚNG TÊN NÀY
+    public int weaponPower = 1;          // ⭐ BONUS DÙNG
+    public int maxweaponPower = 5;       // ⭐ BONUS DÙNG
 
-    void Awake()
+    private float lastBulletTime;
+
+    private void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            Shoot();
+            UpdateFiring();
         }
     }
 
-    void Shoot()
+    void UpdateFiring()
     {
-        if (weaponPower == 1)
+        if (Time.time - lastBulletTime > shootingInterval)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            ShootBullet();
+            lastBulletTime = Time.time;
         }
-        else if (weaponPower == 2)
+    }
+
+    public void ShootBullet()
+    {
+        for (int i = 0; i < weaponPower; i++)
         {
-            Instantiate(bulletPrefab, transform.position + Vector3.left * 0.2f, transform.rotation);
-            Instantiate(bulletPrefab, transform.position + Vector3.right * 0.2f, transform.rotation);
+            Vector3 offset = bulletOffset;
+
+            // bắn nhiều đạn khi weaponPower tăng
+            offset.x += (i - weaponPower / 2f) * 0.2f;
+
+            Instantiate(
+                bulletPrefabs,
+                transform.position + offset,
+                Quaternion.identity
+            );
         }
-        else
+    }
+
+    // ⭐ BONUS GỌI HÀM NÀY
+    public void IncreaseWeaponPower()
+    {
+        if (weaponPower < maxweaponPower)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
-            Instantiate(bulletPrefab, transform.position + Vector3.left * 0.3f, transform.rotation);
-            Instantiate(bulletPrefab, transform.position + Vector3.right * 0.3f, transform.rotation);
+            weaponPower++;
         }
     }
 }
