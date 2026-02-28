@@ -376,8 +376,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b3bd9a0b1537c4aab9087fd8981ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+<<<<<<< HEAD
   explosionPrefab: {fileID: 2310281672750707779, guid: 3a1cc60b36c0eb84393b9f26d8758d41,
     type: 3}
+=======
+  explosionPrefab: {fileID: 0}
+>>>>>>> 235e470 (DemoP5)
   defaultHealthPoint: 3
 --- !u!50 &1111603225
 Rigidbody2D:
@@ -500,6 +504,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!1 &1239342130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4744876067986513574, guid: 08a21e952ffb7b34ea0c3e681ae65133,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693991320568653908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1239342138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239342130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b3bd9a0b1537c4aab9087fd8981ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  explosionPrefab: {fileID: 0}
+  defaultHealthPoint: 5
+>>>>>>> 235e470 (DemoP5)
 --- !u!1 &1633478141
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +707,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4744876067986513574, guid: 08a21e952ffb7b34ea0c3e681ae65133,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1239342138}
   m_SourcePrefab: {fileID: 100100000, guid: 08a21e952ffb7b34ea0c3e681ae65133, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
